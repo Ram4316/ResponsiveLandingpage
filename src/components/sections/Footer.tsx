@@ -4,19 +4,19 @@ import { motion } from "framer-motion";
 
 export function Footer() {
   return (
-    <footer className="relative z-10 pt-32 pb-12 overflow-hidden">
+    <footer className="relative z-10 pt-20 md:pt-32 pb-12 overflow-hidden">
       {/* Large Glowing Footer Background */}
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-purple-dark/30 blur-[200px] pointer-events-none" />
 
       <div className="container mx-auto px-6 md:px-12 relative z-10">
 
         {/* Massive CTA */}
-        <div className="text-center mb-32">
+        <div className="text-center mb-20 md:mb-32">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-5xl md:text-8xl font-bold text-white tracking-tighter mb-8"
+            className="text-4xl sm:text-5xl md:text-8xl font-bold text-white tracking-tighter mb-8"
           >
             Ready to <br />
             evolve?
@@ -28,7 +28,7 @@ export function Footer() {
             transition={{ delay: 0.2 }}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="bg-white text-background px-12 py-5 rounded-full font-bold tracking-wide text-lg shadow-[0_0_40px_rgba(255,255,255,0.3)]"
+            className="bg-white text-background px-8 sm:px-12 py-4 sm:py-5 rounded-full font-bold tracking-wide text-base sm:text-lg shadow-[0_0_40px_rgba(255,255,255,0.3)]"
           >
             START DEPLOYING
           </motion.button>

@@ -5,7 +5,7 @@ import { Activity, BarChart3, Box, Cpu, LineChart, Network, Server, Zap } from "
 
 export function DashboardMockupSection() {
   return (
-    <section className="relative w-full py-32 overflow-hidden bg-background">
+    <section className="relative w-full py-20 md:py-32 overflow-hidden bg-background">
       {/* Background Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[80vh] bg-purple-light/5 blur-[150px] rounded-full pointer-events-none" />
 

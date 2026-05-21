@@ -1,18 +1,13 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import type { CSSProperties } from "react";
 import "./globals.css";
 import { SmoothScrolling } from "@/components/layout/SmoothScrolling";
 import { BackgroundEffects } from "@/components/layout/BackgroundEffects";
 
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-});
-
-const jetbrainsMono = JetBrains_Mono({
-  variable: "--font-geist-mono", // Keeping css variable same to avoid updating css
-  subsets: ["latin"],
-});
+const fontVariables = {
+  "--font-inter": "ui-sans-serif, system-ui, sans-serif",
+  "--font-geist-mono": "ui-monospace, SFMono-Regular, Menlo, monospace",
+} as CSSProperties;
 
 export const metadata: Metadata = {
   title: "nei.co | AI That Changes Your Life",
@@ -25,7 +20,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable} antialiased`}>
+    <html lang="en" className="antialiased" style={fontVariables}>
       <body className="min-h-screen bg-background text-foreground selection:bg-primary selection:text-white">
         <BackgroundEffects />
         <SmoothScrolling>{children}</SmoothScrolling>

@@ -58,11 +58,11 @@ export function Navbar() {
       className={cn(
         "fixed top-0 left-0 right-0 z-40 transition-all duration-300",
         scrolled
-          ? "py-4 bg-background/80 backdrop-blur-md border-b border-white/5"
-          : "py-8"
+          ? "py-3 bg-background/80 backdrop-blur-md border-b border-white/5"
+          : "py-5 md:py-6"
       )}
     >
-      <div className="container mx-auto px-6 md:px-12 flex items-center justify-between">
+      <div className="container mx-auto px-4 sm:px-6 md:px-8 flex items-center justify-between">
         {/* Logo */}
         <a
           href="#"
@@ -70,13 +70,13 @@ export function Navbar() {
             e.preventDefault();
             window.scrollTo({ top: 0, behavior: "smooth" });
           }}
-          className="text-white font-bold text-xl tracking-tight flex items-center gap-1"
+          className="text-white font-bold text-lg sm:text-xl tracking-tight flex items-center gap-1"
         >
           nei.co
         </a>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-10">
+        <nav className="hidden md:flex items-center gap-8 lg:gap-10">
           {navItems.map((item) => {
             const isActive = activeSection === item.href.slice(1);
             return (
@@ -113,16 +113,17 @@ export function Navbar() {
               e.preventDefault();
               handleNavClick("#contact");
             }}
-            className="hidden md:inline-flex px-6 py-2.5 rounded-full border border-white/20 text-sm font-medium text-white hover:bg-white hover:text-background transition-all duration-300"
+            className="hidden md:inline-flex px-4 lg:px-6 py-2.5 rounded-full border border-white/20 text-sm font-medium text-white hover:bg-white hover:text-background transition-all duration-300"
           >
             TRY OUR AI
           </a>
 
           {/* Mobile hamburger */}
           <button
-            className="md:hidden text-white/70 hover:text-white transition-colors"
+            className="md:hidden text-white/70 hover:text-white transition-colors p-2 -mr-2"
             onClick={() => setMobileOpen((prev) => !prev)}
             aria-label="Toggle menu"
+            aria-expanded={mobileOpen}
           >
             {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -138,9 +139,9 @@ export function Navbar() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.25 }}
-            className="md:hidden overflow-hidden bg-background/95 backdrop-blur-md border-t border-white/5"
+            className="md:hidden overflow-hidden bg-background/95 backdrop-blur-md border-t border-white/5 shadow-lg"
           >
-            <nav className="flex flex-col px-6 py-4 gap-4">
+            <nav className="flex flex-col px-4 sm:px-6 py-4 gap-4">
               {navItems.map((item) => (
                 <a
                   key={item.name}

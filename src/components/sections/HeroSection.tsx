@@ -49,7 +49,7 @@ export function HeroSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-[95svh] w-full flex items-center pt-24 pb-16 lg:pt-28 lg:pb-20 overflow-hidden"
+      className="relative min-h-[100svh] w-full flex items-center pt-28 pb-20 sm:pt-32 lg:pt-36 lg:pb-24 overflow-hidden"
     >
       <motion.div aria-hidden className="pointer-events-none absolute inset-0 z-0" style={cursorStyle}>
         <div
@@ -75,10 +75,10 @@ export function HeroSection() {
         />
       </motion.div>
 
-      <div className="container mx-auto px-6 md:px-12 relative z-20 flex flex-col lg:flex-row items-center gap-12 lg:gap-8">
+      <div className="container mx-auto px-4 sm:px-6 md:px-12 relative z-20 flex flex-col lg:flex-row items-center gap-10 lg:gap-8">
 
         {/* Left Side: Copy */}
-        <div className="w-full lg:w-1/2 flex flex-col items-start justify-center mt-8 lg:mt-0 relative z-30 pointer-events-auto">
+        <div className="w-full lg:w-1/2 flex flex-col items-center lg:items-start justify-center text-center lg:text-left mt-6 lg:mt-0 relative z-30 pointer-events-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -97,7 +97,7 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.4, ease: "easeOut" }}
-            className="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.05] text-white mb-6 tracking-tight max-w-xl"
+            className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.05] text-white mb-6 tracking-tight max-w-2xl"
           >
             We provide AI <br />
             that can literally <br />
@@ -108,7 +108,7 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.6, ease: "easeOut" }}
-            className="text-base md:text-lg text-white/60 max-w-lg mb-8 font-light leading-relaxed"
+            className="text-base md:text-lg text-white/60 max-w-xl mb-8 font-light leading-relaxed"
           >
             AI-driven automation for analytics, workflows, and intelligent decision-making.
           </motion.p>
@@ -119,17 +119,17 @@ export function HeroSection() {
             transition={{ duration: 0.8, delay: 1.8, ease: "easeOut" }}
             whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(255,123,84,0.4)" }}
             whileTap={{ scale: 0.95 }}
-            className="bg-primary text-white px-10 py-4 rounded-full font-medium tracking-wide transition-all shadow-[0_15px_45px_rgba(255,123,84,0.25)]"
+            className="bg-primary text-white px-8 sm:px-10 py-4 rounded-full font-medium tracking-wide transition-all shadow-[0_15px_45px_rgba(255,123,84,0.25)]"
           >
             GET STARTED
           </motion.button>
         </div>
 
-        {/* Right Side: Orb Canvas (Desktop: absolute right half, Mobile: absolute behind text) */}
-        <div className="absolute inset-0 lg:relative lg:w-1/2 h-[55vh] md:h-[60vh] lg:h-[80vh] flex items-center justify-center opacity-70 lg:opacity-100 pointer-events-none mt-10 lg:mt-0">
-          <div className="relative w-full h-full max-w-[780px] max-h-[780px]">
-             {/* Dynamic Orb Component */}
-             <OrbCanvas />
+        {/* Right Side: Orb Canvas */}
+        <div className="relative w-full lg:w-1/2 h-[360px] sm:h-[420px] md:h-[500px] lg:h-[78vh] flex items-center justify-center opacity-80 lg:opacity-100 pointer-events-none mt-2 lg:mt-0">
+          <div className="relative w-full h-full max-w-[680px] max-h-[680px]">
+              {/* Dynamic Orb Component */}
+              <OrbCanvas />
           </div>
         </div>
       </div>
