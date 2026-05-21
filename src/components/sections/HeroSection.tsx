@@ -52,38 +52,27 @@ export function HeroSection() {
       className="relative min-h-[95svh] w-full flex items-center pt-24 pb-16 lg:pt-28 lg:pb-20 overflow-hidden"
     >
       <motion.div aria-hidden className="pointer-events-none absolute inset-0 z-0" style={cursorStyle}>
-        <motion.div
-          animate={{ x: [0, 30, -20, 0], y: [0, -25, 15, 0] }}
-          transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute inset-0 opacity-70 blur-[150px]"
+        <div
+          className="absolute inset-0 opacity-80 blur-3xl mix-blend-screen"
           style={{
             background:
-              "radial-gradient(1400px circle at 20% 25%, rgba(108, 53, 222, 0.25), rgba(11, 1, 33, 0) 70%), radial-gradient(1600px circle at 85% 20%, rgba(143, 92, 255, 0.2), rgba(11, 1, 33, 0) 72%), radial-gradient(1400px circle at 50% 85%, rgba(255, 123, 84, 0.14), rgba(11, 1, 33, 0) 75%)",
+              "radial-gradient(520px circle at var(--cursor-x) var(--cursor-y), rgba(108, 53, 222, 0.38), rgba(11, 1, 33, 0) 70%)",
           }}
         />
         <div
-          className="absolute inset-0 opacity-75 blur-[140px] mix-blend-screen"
+          className="absolute inset-0 opacity-60 blur-2xl"
           style={{
             background:
-              "radial-gradient(900px circle at var(--cursor-x) var(--cursor-y), rgba(138, 92, 255, 0.35), rgba(11, 1, 33, 0) 75%)",
+              "radial-gradient(900px circle at 70% 20%, rgba(255, 123, 84, 0.2), rgba(11, 1, 33, 0) 70%)",
           }}
         />
         <div
-          className="absolute inset-0 opacity-55 blur-3xl"
+          className="absolute inset-0 opacity-50 blur-2xl"
           style={{
             background:
-              "radial-gradient(1200px circle at 15% 65%, rgba(80, 45, 190, 0.22), rgba(11, 1, 33, 0) 70%)",
+              "radial-gradient(850px circle at 30% 85%, rgba(108, 53, 222, 0.2), rgba(11, 1, 33, 0) 75%)",
           }}
         />
-        <div
-          className="absolute inset-0 opacity-45 blur-2xl"
-          style={{
-            background:
-              "radial-gradient(1100px circle at 80% 70%, rgba(108, 53, 222, 0.18), rgba(11, 1, 33, 0) 75%)",
-          }}
-        />
-        <div className="hero-dust-layer hero-dust-layer--soft" />
-        <div className="hero-dust-layer hero-dust-layer--fine" />
       </motion.div>
 
       <div className="container mx-auto px-6 md:px-12 relative z-20 flex flex-col lg:flex-row items-center gap-12 lg:gap-8">
