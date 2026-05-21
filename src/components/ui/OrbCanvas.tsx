@@ -34,11 +34,11 @@ export function OrbCanvas() {
   return (
     <div className="absolute inset-0 w-full h-full pointer-events-none" style={{ zIndex: 10 }}>
       <Canvas
-        camera={{ position: [0, 0, 7.5], fov: 40 }}
+        camera={{ position: [0, 0, 7.8], fov: 40 }}
         gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
-        dpr={[1, 2]} // Optimize for high DPI displays but cap at 2
+        dpr={[1, 1.75]}
       >
-        <Environment preset="city" /> {/* Provides realistic glossy reflections */}
+        <Environment preset="city" />
         <BurstParticles />
         <InteractiveOrb mousePos={mousePos} />
         <Preload all />
@@ -51,6 +51,30 @@ function BurstParticles() {
   const pointsRef = useRef<THREE.Points>(null);
   const particleCount = 700;
   const seedRef = useRef(124589);
+  const particleTexture = useMemo(() => {
+    const size = 64;
+    const data = new Uint8Array(size * size * 4);
+
+    for (let y = 0; y < size; y++) {
+      for (let x = 0; x < size; x++) {
+        const dx = x / (size - 1) * 2 - 1;
+        const dy = y / (size - 1) * 2 - 1;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        const alpha = Math.max(0, 1 - distance);
+        const easedAlpha = Math.pow(alpha, 2.2);
+        const index = (y * size + x) * 4;
+
+        data[index] = 255;
+        data[index + 1] = 255;
+        data[index + 2] = 255;
+        data[index + 3] = Math.floor(easedAlpha * 255);
+      }
+    }
+
+    const texture = new THREE.DataTexture(data, size, size, THREE.RGBAFormat);
+    texture.needsUpdate = true;
+    return texture;
+  }, []);
   const initialState = useMemo(() => {
     const positionArray = new Float32Array(particleCount * 3);
     const velocityArray = new Float32Array(particleCount * 3);
@@ -147,8 +171,10 @@ function BurstParticles() {
     <points ref={pointsRef} geometry={geometry} scale={[1.2, 1.2, 1.2]}>
       <pointsMaterial
         size={0.07}
+        map={particleTexture}
         vertexColors
         transparent
+        alphaTest={0.1}
         opacity={0.7}
         depthWrite={false}
         blending={THREE.AdditiveBlending}

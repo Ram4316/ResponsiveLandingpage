@@ -21,7 +21,7 @@ export function ContactSection() {
   };
 
   return (
-    <section id="contact" className="py-32 relative z-10">
+    <section id="contact" className="py-20 md:py-32 relative z-10">
       {/* Background glow */}
       <div className="absolute top-1/2 left-0 w-[400px] h-[400px] bg-purple-light/10 blur-[120px] rounded-full -translate-y-1/2 -translate-x-1/2 pointer-events-none" />
 
