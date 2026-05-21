@@ -8,6 +8,7 @@ import { DashboardMockupSection } from "@/components/sections/DashboardMockupSec
 import { FeaturesSection } from "@/components/sections/FeaturesSection";
 import { TestimonialsSection } from "@/components/sections/TestimonialsSection";
 import { PricingSection } from "@/components/sections/PricingSection";
+import { ContactSection } from "@/components/sections/ContactSection";
 import { FAQSection } from "@/components/sections/FAQSection";
 import { Footer } from "@/components/sections/Footer";
 
@@ -24,6 +25,7 @@ export default function Home() {
             <FeaturesSection />
             <TestimonialsSection />
             <PricingSection />
+            <ContactSection />
             <FAQSection />
             <Footer />
         </main>
