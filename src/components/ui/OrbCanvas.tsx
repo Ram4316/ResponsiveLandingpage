@@ -49,35 +49,14 @@ export function OrbCanvas() {
 
 function BurstParticles() {
   const pointsRef = useRef<THREE.Points>(null);
-  const particleCount = 520;
+  const particleCount = 700;
   const seedRef = useRef(124589);
-  const particleTexture = useMemo(() => {
-    const size = 96;
-    const canvas = document.createElement("canvas");
-    canvas.width = size;
-    canvas.height = size;
-    const context = canvas.getContext("2d");
-    if (!context) return null;
-    const gradient = context.createRadialGradient(size / 2, size / 2, 0, size / 2, size / 2, size / 2);
-    gradient.addColorStop(0, "rgba(255,255,255,0.95)");
-    gradient.addColorStop(0.35, "rgba(164,120,255,0.65)");
-    gradient.addColorStop(0.65, "rgba(108,53,222,0.35)");
-    gradient.addColorStop(1, "rgba(0,0,0,0)");
-    context.fillStyle = gradient;
-    context.fillRect(0, 0, size, size);
-    const texture = new THREE.CanvasTexture(canvas);
-    texture.minFilter = THREE.LinearFilter;
-    texture.magFilter = THREE.LinearFilter;
-    texture.wrapS = THREE.ClampToEdgeWrapping;
-    texture.wrapT = THREE.ClampToEdgeWrapping;
-    return texture;
-  }, []);
   const initialState = useMemo(() => {
     const positionArray = new Float32Array(particleCount * 3);
     const velocityArray = new Float32Array(particleCount * 3);
     const colorArray = new Float32Array(particleCount * 3);
-    const highlight = new THREE.Color("#B18CFF");
-    const base = new THREE.Color("#5E31D9");
+    const warm = new THREE.Color("#FF7B54");
+    const cool = new THREE.Color("#6C35DE");
     const seededNoise = (seed: number) => {
       const value = Math.sin(seed * 12.9898) * 43758.5453;
       return value - Math.floor(value);
@@ -102,7 +81,7 @@ function BurstParticles() {
       velocityArray[idx + 2] = dirZ * speed;
 
       const mix = seededNoise(i + 5);
-      const color = base.clone().lerp(highlight, mix);
+      const color = cool.clone().lerp(warm, mix);
       colorArray[idx] = color.r;
       colorArray[idx + 1] = color.g;
       colorArray[idx + 2] = color.b;
@@ -123,7 +102,7 @@ function BurstParticles() {
     const positionAttribute = pointsRef.current.geometry.getAttribute("position") as THREE.BufferAttribute;
     const array = positionAttribute.array as Float32Array;
     const velocities = velocitiesRef.current;
-    const maxRadius = 16;
+    const maxRadius = 14;
     const nextRandom = () => {
       const next = (seedRef.current * 1664525 + 1013904223) >>> 0;
       seedRef.current = next;
@@ -167,15 +146,12 @@ function BurstParticles() {
   return (
     <points ref={pointsRef} geometry={geometry} scale={[1.2, 1.2, 1.2]}>
       <pointsMaterial
-        size={0.1}
-        map={particleTexture ?? undefined}
-        alphaMap={particleTexture ?? undefined}
+        size={0.07}
         vertexColors
         transparent
-        opacity={0.55}
+        opacity={0.7}
         depthWrite={false}
         blending={THREE.AdditiveBlending}
-        sizeAttenuation
       />
     </points>
   );
