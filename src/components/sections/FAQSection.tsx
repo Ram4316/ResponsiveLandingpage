@@ -15,7 +15,7 @@ export function FAQSection() {
   ];
 
   return (
-    <section className="py-32 relative z-10">
+    <section id="faq" className="py-32 relative z-10">
       <div className="container mx-auto px-6 md:px-12 max-w-4xl">
         <div className="mb-16">
           <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">Questions?</h2>
